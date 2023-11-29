@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>수강 신청</title>
+</head>
+<body>
+
+<h2>수강 신청</h2>
+
+<form action="/subject/enroll" method="post">
+    <div>
+        <label for="studentId">학번</label>
+        <select id="studentId" name="studentId" required>
+            <option value="">학번 선택</option>
+            <!-- studentDtoList를 반복하며 각 학생의 학번을 표시합니다. -->
+            <option th:each="studentDto : ${studentDtoList}" th:value="${studentDto.id}" th:text="${studentDto.id}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="studentName">이름</label>
+        <select id="studentName" name="studentName" required>
+            <option value="">이름 선택</option>
+            <!-- studentDtoList를 반복하며 각 학생의 이름을 표시합니다. -->
+            <option th:each="studentDto : ${studentDtoList}" th:value="${studentDto.name}" th:text="${studentDto.name}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="subject">과목</label>
+        <select id="subject" name="subject" required>
+            <option value="">과목 선택</option>
+            <!-- subjectDtoList를 반복하며 각 과목의 이름을 표시합니다. -->
+            <option th:each="subjectDto : ${subjectDtoList}" th:value="${subjectDto.name}" th:text="${subjectDto.name}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="score">점수</label>
+        <input type="number" id="score" name="score" min="0" max="100" required>
+    </div>
+    <button type="submit">신청</button>
+</form>
+
+</body>
+</html>

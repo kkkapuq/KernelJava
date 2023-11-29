@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <form action="/student/new" method="post">
+    <div class="form-group">
+      <label for="id">학번</label>
+      <input type="number" id="id" name="id" placeholder="학번을 입력하세요" required>
+    </div>
+    <div class="form-group">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+    </div>
+    <div class="form-group">
+      <label for="major">전공</label>
+      <select id="major" name="major" onchange="updateMajorSubject()" required>
+        <option value="국어국문학과" selected>국어국문학과</option>
+        <option value="컴퓨터공학과">컴퓨터공학과</option>
+      </select>
+    </div>
+    <div class="form-group" id="majorSubjectContainer">
+      <label for="majorSubject">중점과목</label>
+      <input type="text" id="majorSubject" name="majorSubject" value="국어" readonly>
+    </div>
+    <button type="submit">등록</button>
+  </form>
+</div> <!-- /container -->
+
+<script>
+  function updateMajorSubject() {
+    var major = document.getElementById("major").value;
+    var majorSubjectInput = document.getElementById("majorSubject");
+
+    if (major === "국어국문학과") {
+      majorSubjectInput.value = "국어";
+    } else if (major === "컴퓨터공학과") {
+      majorSubjectInput.value = "수학";
+    } else {
+      majorSubjectInput.value = "";
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>과목 목록</title>
+</head>
+<body>
+
+<h2>과목 목록</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>과목 ID</th>
+        <th>과목명</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- subjectList를 반복하며 각 과목을 표시합니다. -->
+    <tr th:each="subjectDto : ${subjectList}">
+        <td th:text="${subjectDto.id}"></td>
+        <td th:text="${subjectDto.name}"></td>
+        <td>
+            <!-- 추가 세부 정보를 보기 위한 링크 또는 버튼을 만듭니다. -->
+            <a th:href="@{/subject/{id}(id=${subjectDto.id})}">수강생 학점 보기</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
